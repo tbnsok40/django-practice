@@ -23,17 +23,23 @@
             <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link active" href="#">Home</a>
                 <a class="nav-item nav-link" href="#">Blog</a>
-                <a class="nav-item nav-link" href="{% url 'new' %}">글쓰기</a>
+                <a class="nav-item nav-link" href="#">글쓰기</a>
             </div>
         </div>
     </div>
 </nav>
 <div class="container">
-    {% for blog in blogs.all %}
-    <h1>{{blog.title}}</h1>
-    <p>{{blog.pub_date}}</p>
-    <p>{{blog.summary}} <a href="{% url 'detail' blog.id %}">...more</a></p>
-    {%endfor%}
+    <form action="{% url 'create' %}">
+        <h4>제목: </h4>
+        <input type="text" name="title">
+        <br>
+        <br>
+        <h4>본문: </h4>
+        <textarea cols=40 rows=10 name="body"></textarea>
+        <br>
+        <br>
+        <input class="btn btn-dark" type="submit" value="제출하기">
+    </form>
 </div>
 
 <body>
