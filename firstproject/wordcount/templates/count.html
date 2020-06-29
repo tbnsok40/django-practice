@@ -1,0 +1,9 @@
+<a href="{% url 'wordcount' %}">다시</a>
+<h1> 전체 문장 : {{fulltext}} </h1>
+
+
+<h2>단어별 빈도수</h2>
+{% for word, counttotal in dictionary %}
+{{ word }} : {{ counttotal }}
+<br>
+{% endfor %}
