@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto">
                     <a class="nav-item nav-link active" href="{% url 'home' %}">Home</span></a>
-                    <a class="nav-item nav-link" href="#">Blog</a>
+                    <a class="nav-item nav-link" href="{% url 'portfolio' %}"> Portfolio </a>
                     <a class="nav-item nav-link" href="#">수료증</a>
                 </div>
             </div>
@@ -31,10 +31,10 @@
     </nav>
 
     <div class="container jumbotron">
-        <h1>{{ blog.title }}</h1>
-        <p>{{ blog.pub_date }}</p>
-        <p>{{ blog.body }}</p>
-        <a href="{% url 'home' %}">돌아가기</a>
+        <h1>{{blog.title}}</h1>
+        <h4>{{blog.pub_date}}</h4>
+        <br>
+        <p>{{blog.body}}</p>
     </div>
 
 

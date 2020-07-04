@@ -1,16 +1,15 @@
-
-from .models import Blog # models에서 Blog 클래스를 안 가져오니 문제가 생겼다.
-# Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect
+from .models import Blog
 from django.utils import timezone
 
 # Create your views here.
+
 def home(request):
     blogs = Blog.objects
-    return render(request, 'home.html', {'blogs': blogs})
+    return render(request, 'home.html', {'blogs':blogs})
 def detail(request, blog_id):
-    blog_detail = get_object_or_404(Blog, pk = blog_id)
-    return render(request, 'detail.html', {'blog': blog_detail})
+    blog = get_object_or_404(Blog, pk=blog_id)
+    return render(request, 'detail.html', {'blog':blog})
 def new(request):
     return render(request, 'new.html')
 def create(request):
@@ -19,4 +18,4 @@ def create(request):
     blog.body = request.GET['body']
     blog.pub_date = timezone.datetime.now()
     blog.save()
-    return redirect('/blog/' + str(blog.id))
+    return redirect('/blog/'+str(blog.id))
