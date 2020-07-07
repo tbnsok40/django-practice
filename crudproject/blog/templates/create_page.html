@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    글쓰기 페이지
+    {% if one_post %}
+    <form action='{% url 'update' one_post.id%}' method='POST'>
+        {% csrf_token %}
+        <input type="text" name="title" value={{ one_post.title }} />
+        <input type="text" name="nickname" value={{ one_post.nickname }} />
+        <input type="textarea" name="body" value={{ one_post.body }} />
+        <input type="submit" value="수정하기" />
+    </form>
+
+    {% else %}
+
+    <form action='{% url 'create'%}' method='POST'>
+        {% csrf_token %}
+        <input type="text" name="title" value={{ one_post.title }} />
+        <input type="text" name="nickname" value={{ one_post.nickname }} />
+        <input type="textarea" name="body" value={{ one_post.body }} />
+        <input type="submit" value="Submit" />
+    </form>
+    {% endif %}
+
+    <a href="{% url 'index'%}">홈으로</a>
+</body>
+
+</html>
