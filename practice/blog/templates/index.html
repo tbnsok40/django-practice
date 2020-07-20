@@ -11,14 +11,16 @@
     {% for blog in blogs.all %}
     <h1>{{blog.title}}</h1>
     <p>
-        {#<!-- {{blog.summary}} <a href="detail/{blog.id}">...more</a> -->#}
         {{blog.summary}} <a href="{% url 'detail' blog.id%}">...more</a>
+
+        {#<!-- {{blog.summary}} <a href="detail/{blog.id}">...more</a> -->#}
         {#<!-- <p>{{ blog.summary }}<a href="{% url 'detail' blog.id %}">....more</a></p> -->#}
     </p>
     <!-- {{blog.summary}} -->
     <hr>
 
     {% endfor %}
+    <a href="{% url 'new'%}">글쓰기</a>
 
 </body>
 
