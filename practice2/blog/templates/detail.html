@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{blog}}</h2>
+<h4>{{blog.body}}</h4> <br>
+{{blog.created_at}}
+<a href="{% url 'index' %}">돌아가기</a>
+
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="{% url 'create' %}">
+    <h3>title</h3>
+    <input type="text" name="title">
+    <h3>body</h3>
+    <textarea name="body" id="" cols="30" rows="10"></textarea> <br>
+    <input type="submit">
+</form>
+{% endblock %}
