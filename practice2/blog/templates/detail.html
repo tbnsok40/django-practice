@@ -14,7 +14,21 @@
 <br>
 <hr>
 {% for i in blog.comment_set.all %}
-<p>{{i}} <a href="{% url 'delete_comment' i.id blog.id%}">삭제</a></p>
+<p>{{i}} <a href="{% url 'delete_comment' i.id blog.id%}">❌ </a></p>
+<form method='POST' action="{% url 'create_recomment' blog.id%}">
+    {% csrf_token%}
+    {% for recom_form in recomment_form %}
+    {% if recom_form.label != 'Comment' %}
+    {{recom_form.label}}:{{recom_form}}
+    {% endif %}
+    {% endfor %}
+    <input type="hidden" name='comment' value={{i.id}}>
+    <input type="submit">
+</form>
+{% for recom in i.recomment_set.all%}
+↪{{recom}}
+<br>
+{% endfor %}
 <hr>
 {% endfor %}
 
