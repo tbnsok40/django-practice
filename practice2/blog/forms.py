@@ -7,6 +7,12 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('body',)
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['body'].label = '댓글'
+        self.fields['body'].widget.attrs.update({'class': 'blog_body',
+                                                 'placeholder': 'ㅗ'})
+
 
 class ReCommentForm(forms.ModelForm):
     class Meta:

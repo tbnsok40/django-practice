@@ -37,8 +37,6 @@ def detail(request, blog_id):
 def create_comment(request, blog_id):
     filled_form = CommentForm(request.POST)
     if filled_form.is_valid():
-        # filled_form.post = Blog.objects.get(id=blog_id)
-        # filled_form.save()
 
         ##############################################################################
         temp_form = filled_form.save(commit=False)  # True하면 왜 에러?
@@ -49,14 +47,17 @@ def create_comment(request, blog_id):
 
         # 그럼 이걸 위의 코드보다 먼저 선언하면 되는거 아냐? 그럼 굳이 commit=False할 필요도 없고
         temp_form.post = Blog.objects.get(id=blog_id)
+        temp_form.author = request.user
         temp_form.save()
 
     return redirect('detail', blog_id)
 
 
 def delete_comment(request, com_id, blog_id):
+
     mycom = Comment.objects.get(id=com_id)
-    mycom.delete()
+    if mycom.author == request.user:
+        mycom.delete()
     return redirect('detail', blog_id)
 
 

@@ -16,10 +16,12 @@
 {% for i in blog.comment_set.all %}
 <!-- 역참조( related_name을 원래는 정해주는게 옳지만, 이런 방식도 많이 사용된다.) -->
 
-<p>{{i}} <a href="{% url 'delete_comment' i.id blog.id%}">❌ </a></p>
+<p>{{i}} {{i.author}} <a href="{% url 'delete_comment' i.id blog.id%}">❌ </a></p>
 <form method='POST' action="{% url 'create_recomment' blog.id%}">
     {% csrf_token%}
+    =========form========= <br>
     {% for recom_form in recomment_form %}
+
     {% if recom_form.label != 'Comment' %}
 
     {{recom_form.label}}:{{recom_form}}
@@ -27,13 +29,15 @@
     {% endif %}
     {% endfor %}
     <input type="hidden" name='comment' value={{i.id}}>
-    <input type="submit">
+    <input type="submit"><br>
+    =========form=========
 </form>
 {% for recom in i.recomment_set.all%}
-↪{{recom}} | {{recom.created_at}}
+↪{{recom}} || {{recom.created_at.}}
 <br>
 {% endfor %}
 <hr>
 {% endfor %}
+<input title="Your Email Address" type="text" name="name" value="Your Name" class="form-control" />
 
 {% endblock %}
