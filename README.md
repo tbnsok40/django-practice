@@ -11,4 +11,8 @@
 
 # Likelion work 2nd Busan finished -200829
 
-# project => cafe around you
+# toy project
+1. cafe around you (classification: Franchise, Personal, study, Insta, Ocean etc)
+- AIM 처럼 탭 별로 테마 정해서 지도 보여주기
+
+2. 
