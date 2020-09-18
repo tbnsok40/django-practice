@@ -1,0 +1,13 @@
+<form method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <!-- p태그로 form을 감싸줘. p 태그는 블락 속성을 지니기 때문이다 -->
+
+    <input type="submit" value='편지작성'>
+
+    <!-- 이 짓 할 필요가 없다 -->
+    <!-- Sender <input type="text"> <br>
+    Content <input type="text"> <br>
+    Title <input type="text"> <br> -->
+</form>
